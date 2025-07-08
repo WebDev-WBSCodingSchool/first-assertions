@@ -17,10 +17,10 @@ import {
 const app = document.querySelector<HTMLDivElement>('#app')!;
 
 app.innerHTML = `
-  <div>
-    <h1>🧪 Testing Exercise - Utility Functions</h1>
-    <p>Welcome to the testing exercise! Below are 10 utility functions in action.</p>
-    <p><strong>Your task:</strong> Create comprehensive test suites for each function using Vitest!</p>
+  <div class="font-sans leading-relaxed max-w-5xl mx-auto p-5 bg-gray-100 dark:bg-gray-900 min-h-screen">
+    <h1 class="text-3xl font-bold text-slate-800 dark:text-slate-100 text-center mb-3">🧪 Testing Exercise - Utility Functions</h1>
+    <p class="text-center text-slate-600 dark:text-slate-300 mb-3">Welcome to the testing exercise! Below are 10 utility functions in action.</p>
+    <p class="text-center text-slate-600 dark:text-slate-300 mb-8"><strong>Your task:</strong> Create comprehensive test suites for each function using Vitest!</p>
     <div id="results"></div>
   </div>
 `;
@@ -30,16 +30,16 @@ const resultsContainer = document.querySelector('#results')!;
 // Function to add result to the page
 function addResult(title: string, result: string) {
   const resultDiv = document.createElement('div');
-  resultDiv.className = 'result-item';
+  resultDiv.className =
+    'bg-white dark:bg-gray-800 my-5 p-5 rounded-lg shadow-md dark:shadow-gray-900/50';
   resultDiv.innerHTML = `
-    <h3>${title}</h3>
-    <pre>${result}</pre>
+    <h3 class="mt-0 text-slate-800 dark:text-slate-100 border-b-2 border-blue-500 dark:border-blue-400 pb-3 mb-4 font-semibold text-lg">${title}</h3>
+    <pre class="bg-gray-50 dark:bg-gray-700 p-4 rounded border-l-4 border-blue-500 dark:border-blue-400 overflow-x-auto whitespace-pre-wrap text-sm text-slate-700 dark:text-slate-200">${result}</pre>
   `;
   resultsContainer.appendChild(resultDiv);
 }
 
 // 1. Pizza Order Validator
-console.log('🍕 Testing Pizza Order Validator...');
 const pizzaResult1 = validatePizzaOrder('large', ['pepperoni', 'mushrooms'], 25);
 const pizzaResult2 = validatePizzaOrder('small', ['pineapple', 'ham'], 30);
 const pizzaResult3 = validatePizzaOrder('medium', ['cheese'], 3);
@@ -151,58 +151,3 @@ addResult(
   `By rating (desc): ${sortedByRating.map(m => `${m.title} (${m.rating})`).join(', ')}
 By year (asc): ${sortedByYear.map(m => `${m.title} (${m.year})`).join(', ')}`
 );
-
-console.log(
-  '✅ All utility functions tested! Check the results above and start writing your tests!'
-);
-
-// Add some styling for better presentation
-const style = document.createElement('style');
-style.textContent = `
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-    line-height: 1.6;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f5f5f5;
-  }
-  
-  h1 {
-    color: #2c3e50;
-    text-align: center;
-    margin-bottom: 10px;
-  }
-  
-  p {
-    text-align: center;
-    color: #7f8c8d;
-    margin-bottom: 30px;
-  }
-  
-  .result-item {
-    background: white;
-    margin: 20px 0;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  }
-  
-  .result-item h3 {
-    margin-top: 0;
-    color: #2c3e50;
-    border-bottom: 2px solid #3498db;
-    padding-bottom: 10px;
-  }
-  
-  .result-item pre {
-    background: #f8f9fa;
-    padding: 15px;
-    border-radius: 4px;
-    border-left: 4px solid #3498db;
-    overflow-x: auto;
-    white-space: pre-wrap;
-    font-size: 14px;
-  }
-`;
-document.head.appendChild(style);

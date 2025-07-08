@@ -4,17 +4,14 @@
  * @param options - Object specifying character types to include
  * @returns Generated password string
  */
-export interface PasswordOptions {
+export type PasswordOptions = {
   includeUppercase?: boolean;
   includeLowercase?: boolean;
   includeNumbers?: boolean;
   includeSymbols?: boolean;
-}
+};
 
-export function generateSecurePassword(
-  length: number,
-  options: PasswordOptions = {}
-): string {
+export function generateSecurePassword(length: number, options: PasswordOptions = {}): string {
   if (length < 4) {
     throw new Error('Password length must be at least 4 characters');
   }
